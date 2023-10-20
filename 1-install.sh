@@ -106,6 +106,7 @@ packagesPacman=(
     "blueman"
     "sddm"
     "papirus-icon-theme"
+    "polkit-gnome"
 );
 
 packagesYay=(
