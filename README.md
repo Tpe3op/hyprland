@@ -59,11 +59,16 @@ Hyprland: In addition, you can switch the Waybar Template with SUPER + CTRL + T 
 
 To make it easy for you to get started with my dotfiles, here's a list of recommended next steps.
 
-PLEASE BACKUP YOUR EXISTING .config WITH YOUR DOTFILES BEFORE STARTING THE SCRIPTS.
+## Initial installation
+
+PLEASE BACKUP YOUR EXISTING .config FOLDER WITH YOUR DOTFILES BEFORE STARTING THE SCRIPTS FOR INITIONAL INSTALLTION.
 
 ```
 # Make sure that you're in your home directory
 cd
+
+# Create a backup from your existing .config
+cp -r ~/.config ~/.config_backup
 
 # Clone the repository from your home directory
 git clone https://gitlab.com/stephan-raabe/dotfiles.git
@@ -72,6 +77,38 @@ git clone https://gitlab.com/stephan-raabe/dotfiles.git
 
 # Change into the new dotfiles folder
 cd dotfiles
+
+# Install all required packages
+./1-install.sh
+
+# Install hyprland window manager
+./2-install-hyprland.sh
+# OR/AND Install qtile window manager
+./2-install-qtile.sh
+
+# Install dotfiles
+./3-install-dotfiles.sh
+
+```
+
+## Update existing dotfiles
+
+PLEASE BACKUP YOUR dotfiles FOLDER BEFORE UPDATING.
+
+```
+# Make sure that you're in your home directory
+cd
+
+# OPTIONAL: Create a backup from your existing dotfiles
+cp -r ~/dotfiles ~/dotfiles_backup
+
+# Change into the new folder
+cd dotfiles
+
+# Pull the lastest status
+git stash pull
+
+# Or download the lastest version and unzip into ~/dotfiles folder
 
 # Install all required packages
 ./1-install.sh
