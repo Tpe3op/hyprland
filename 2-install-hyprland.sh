@@ -72,12 +72,8 @@ _installPackagesYay "${packagesYay[@]}";
 # ------------------------------------------------------
 # Create .hyprland.conf
 # ------------------------------------------------------
-echo ""
-echo "-> Create .hyprland.conf if not exists"
-~/dotfiles/hypr/conf/initconfig.sh
+~/dotfiles/hypr/initconfig.sh
 
 echo ""
 echo "DONE!"
-echo "NEXT: Update the keyboard layout and screen resolution in ~/.hyprland.conf"
-echo "Then proceed with with 3-dotfiles.sh"
-
+echo "NEXT: Then proceed with with 3-dotfiles.sh"
