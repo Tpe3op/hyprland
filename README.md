@@ -106,7 +106,9 @@ cp -r ~/dotfiles ~/dotfiles_backup
 cd dotfiles
 
 # Pull the lastest status
-git stash pull
+# git stash; git pull
+git fetch origin # <-- name of remote, change if not origin
+git reset --hard origin/main
 
 # Or download the lastest version and unzip into ~/dotfiles folder
 
