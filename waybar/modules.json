@@ -161,6 +161,7 @@
     "custom/appmenu": {
         "format": "Apps",
         "on-click": "~/dotfiles/scripts/applauncher.sh",
+        "on-click-right": "~/dotfiles/hypr/scripts/keybindings.sh",
         "tooltip": false
     },
 
