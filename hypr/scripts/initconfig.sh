@@ -15,9 +15,9 @@ echo "-> Create .hyprland.conf if not exists"
 # Check if .hyprland.conf already exisits if not create
 # ----------------------------------------------------- 
 if [ ! -f ~/.hyprland.conf ]; then
-    cp ~/dotfiles/hypr/conf/.hyprland.conf ~
+    cp ~/dotfiles/hypr/conf/.hyprland.sh ~
     echo ".hyprland.conf created in your home directory."
-    echo "PLEASE NOTE: Open ~/.hyprland.conf to setup keyboard layout and monitor settings."
+    echo "PLEASE NOTE: Open ~/.hyprland.sh to setup keyboard layout and monitor settings."
 else
-    echo ".hyprland.conf already exists."
+    echo ".hyprland.sh already exists."
 fi
