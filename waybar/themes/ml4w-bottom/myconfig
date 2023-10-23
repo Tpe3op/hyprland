@@ -32,6 +32,7 @@
     // Modules Left
     "modules-left": [
         "custom/appmenu",
+        "custom/keybindings",
         "custom/wallpaper",
         "custom/waybarthemes",          
         "wlr/taskbar",
