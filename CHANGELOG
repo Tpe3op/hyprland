@@ -1,3 +1,9 @@
+Version 2.5
+https://gitlab.com/stephan-raabe/dotfiles/-/releases/2.5
+--------------------------------------------------------
+- Key bindings rofi menu. Opens with SUPER+CTRL+H or right click on Apps
+- Exclude startup hyprctl commands into optional ~/.hyprland.sh . Reload with SUPER+SHIFT+R 
+
 Version 2.4
 https://gitlab.com/stephan-raabe/dotfiles/-/releases/2.4
 --------------------------------------------------------
