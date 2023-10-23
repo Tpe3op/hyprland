@@ -52,64 +52,114 @@ browser = "chromium"
 # --------------------------------------------------------
 mod = "mod4" # SUPER KEY
 
-keys = [
+if qtile.core.name == "x11":
+    keys = [
 
-    # Focus
-    Key([mod], "Left", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "Right", lazy.layout.right(), desc="Move focus to right"),
-    Key([mod], "Down", lazy.layout.down(), desc="Move focus down"),
-    Key([mod], "Up", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window around"),
-    
-    # Move
-    Key([mod, "shift"], "Left", lazy.layout.shuffle_left(), desc="Move window to the left"),
-    Key([mod, "shift"], "Right", lazy.layout.shuffle_right(), desc="Move window to the right"),
-    Key([mod, "shift"], "Down", lazy.layout.shuffle_down(), desc="Move window down"),
-    Key([mod, "shift"], "Up", lazy.layout.shuffle_up(), desc="Move window up"),
+        # Focus
+        Key([mod], "Left", lazy.layout.left(), desc="Move focus to left"),
+        Key([mod], "Right", lazy.layout.right(), desc="Move focus to right"),
+        Key([mod], "Down", lazy.layout.down(), desc="Move focus down"),
+        Key([mod], "Up", lazy.layout.up(), desc="Move focus up"),
+        Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window around"),
+        
+        # Move
+        Key([mod, "shift"], "Left", lazy.layout.shuffle_left(), desc="Move window to the left"),
+        Key([mod, "shift"], "Right", lazy.layout.shuffle_right(), desc="Move window to the right"),
+        Key([mod, "shift"], "Down", lazy.layout.shuffle_down(), desc="Move window down"),
+        Key([mod, "shift"], "Up", lazy.layout.shuffle_up(), desc="Move window up"),
 
-    # Swap
-    Key([mod, "shift"], "h", lazy.layout.swap_left()),
-    Key([mod, "shift"], "l", lazy.layout.swap_right()),
+        # Swap
+        Key([mod, "shift"], "h", lazy.layout.swap_left()),
+        Key([mod, "shift"], "l", lazy.layout.swap_right()),
 
-    Key([mod], "Print", lazy.spawn(home + "/dotfiles/scripts/scrot.sh")),
+        Key([mod], "Print", lazy.spawn(home + "/dotfiles/scripts/scrot.sh")),
 
-    # Size
-    # Key([mod], "h", lazy.layout.shrink(), lazy.layout.decrease_nmaster(), desc='Shrink window (MonadTall)'),
-    # Key([mod], "l", lazy.layout.grow(), lazy.layout.increase_nmaster(), desc='Expand window (MonadTall)'),
-    Key([mod, "control"], "Down", lazy.layout.shrink(), desc="Grow window to the left"),
-    Key([mod, "control"], "Up", lazy.layout.grow(), desc="Grow window to the right"),
-    # Key([mod, "control"], "Down", lazy.layout.grow_down(), desc="Grow window down"),
-    # Key([mod, "control"], "Up", lazy.layout.grow_up(), desc="Grow window up"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+        # Size
+        Key([mod, "control"], "Down", lazy.layout.shrink(), desc="Grow window to the left"),
+        Key([mod, "control"], "Up", lazy.layout.grow(), desc="Grow window to the right"),
+        Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
 
-    # Floating
-    Key([mod], "t", lazy.window.toggle_floating(), desc='Toggle floating'),
-    
-    # Split
-    Key([mod, "shift"], "Return", lazy.layout.toggle_split(), desc="Toggle between split and unsplit sides of stack"),
+        # Floating
+        Key([mod], "t", lazy.window.toggle_floating(), desc='Toggle floating'),
+        
+        # Split
+        Key([mod, "shift"], "Return", lazy.layout.toggle_split(), desc="Toggle between split and unsplit sides of stack"),
 
-    # Toggle Layouts
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+        # Toggle Layouts
+        Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
 
-    # Fullscreen
-    Key([mod], "f", lazy.window.toggle_fullscreen()),
+        # Fullscreen
+        Key([mod], "f", lazy.window.toggle_fullscreen()),
 
-    #System
-    Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod, "control"], "q", lazy.spawn(home + "/dotfiles/scripts/powermenu.sh"), desc="Open Powermenu"),
-    
-    # Apps
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod, "control"], "Return", lazy.spawn(home + "/dotfiles/scripts/applauncher.sh"), desc="Launch Rofi"),
-    Key([mod], "b", lazy.spawn(browser), desc="Launch Browser"),
-    Key([mod, "control"], "b", lazy.spawn(home + "/dotfiles/scripts/bravebookmarks.sh"), desc="Rofi Brave Bookmarks"),
-    Key([mod], "v", lazy.spawn(home + "/dotfiles/scripts/looking-glass.sh"), desc="Start Looking Glass Client"),
-    Key([mod, "shift"], "w", lazy.spawn(home + "/dotfiles/scripts/updatewal.sh"), desc="Update Theme and Wallpaper"),
-    Key([mod, "control"], "w", lazy.spawn(home + "/dotfiles/scripts/wallpaper.sh"), desc="Select Theme and Wallpaper"),
-    Key([mod, "control"], "t", lazy.spawn(home + "/dotfiles/scripts/templates.sh"), desc="Select Tempate and copy to clipboard"),
-#    Key([], 'F10', lazy.spawn("brave --app=https://chat.openai.com"), desc="Open ChatGPT")
-]
+        #System
+        Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
+        Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
+        Key([mod, "control"], "q", lazy.spawn(home + "/dotfiles/scripts/powermenu.sh"), desc="Open Powermenu"),
+        
+        # Apps
+        Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+        Key([mod, "control"], "Return", lazy.spawn(home + "/dotfiles/scripts/applauncher.sh"), desc="Launch Rofi"),
+        Key([mod], "b", lazy.spawn(browser), desc="Launch Browser"),
+        Key([mod, "control"], "b", lazy.spawn(home + "/dotfiles/scripts/bravebookmarks.sh"), desc="Rofi Brave Bookmarks"),
+        Key([mod], "v", lazy.spawn(home + "/dotfiles/scripts/looking-glass.sh"), desc="Start Looking Glass Client"),
+        Key([mod, "shift"], "w", lazy.spawn(home + "/dotfiles/scripts/updatewal.sh"), desc="Update Theme and Wallpaper"),
+        Key([mod, "control"], "w", lazy.spawn(home + "/dotfiles/scripts/wallpaper.sh"), desc="Select Theme and Wallpaper"),
+        Key([mod, "control"], "t", lazy.spawn(home + "/dotfiles/scripts/templates.sh"), desc="Select Tempate and copy to clipboard")
+    ]
+elif qtile.core.name == "wayland":
+    keys = [
+
+        # Focus
+        Key([mod], "Left", lazy.layout.left(), desc="Move focus to left"),
+        Key([mod], "Right", lazy.layout.right(), desc="Move focus to right"),
+        Key([mod], "Down", lazy.layout.down(), desc="Move focus down"),
+        Key([mod], "Up", lazy.layout.up(), desc="Move focus up"),
+        Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window around"),
+        
+        # Move
+        Key([mod, "shift"], "Left", lazy.layout.shuffle_left(), desc="Move window to the left"),
+        Key([mod, "shift"], "Right", lazy.layout.shuffle_right(), desc="Move window to the right"),
+        Key([mod, "shift"], "Down", lazy.layout.shuffle_down(), desc="Move window down"),
+        Key([mod, "shift"], "Up", lazy.layout.shuffle_up(), desc="Move window up"),
+
+        # Swap
+        Key([mod, "shift"], "h", lazy.layout.swap_left()),
+        Key([mod, "shift"], "l", lazy.layout.swap_right()),
+
+        Key([mod], "Print", lazy.spawn(home + "/dotfiles/scripts/scrot.sh")),
+
+        # Size
+        Key([mod, "control"], "Down", lazy.layout.shrink(), desc="Grow window to the left"),
+        Key([mod, "control"], "Up", lazy.layout.grow(), desc="Grow window to the right"),
+        Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+
+        # Floating
+        Key([mod], "t", lazy.window.toggle_floating(), desc='Toggle floating'),
+        
+        # Split
+        Key([mod, "shift"], "Return", lazy.layout.toggle_split(), desc="Toggle between split and unsplit sides of stack"),
+
+        # Toggle Layouts
+        Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+
+        # Fullscreen
+        Key([mod], "f", lazy.window.toggle_fullscreen()),
+
+        #System
+        Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
+        Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
+        Key([mod, "control"], "q", lazy.spawn(home + "/dotfiles/scripts/powermenu.sh"), desc="Open Powermenu"),
+        
+        # Apps
+        Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+        Key([mod, "control"], "Return", lazy.spawn(home + "/dotfiles/scripts/applauncher.sh"), desc="Launch Rofi"),
+        Key([mod], "b", lazy.spawn(browser), desc="Launch Browser"),
+        Key([mod, "control"], "b", lazy.spawn(home + "/dotfiles/scripts/bravebookmarks.sh"), desc="Rofi Brave Bookmarks"),
+        Key([mod], "v", lazy.spawn(home + "/dotfiles/scripts/looking-glass.sh"), desc="Start Looking Glass Client"),
+        Key([mod, "shift"], "w", lazy.spawn(home + "/dotfiles/scripts/updatewal.sh"), desc="Update Theme and Wallpaper"),
+        Key([mod, "control"], "w", lazy.spawn(home + "/dotfiles/scripts/wallpaper.sh"), desc="Select Theme and Wallpaper"),
+        Key([mod, "control"], "t", lazy.spawn(home + "/dotfiles/scripts/templates.sh"), desc="Select Tempate and copy to clipboard")
+    ]
 
 # --------------------------------------------------------
 # Groups
@@ -149,16 +199,16 @@ keys.extend([
 
 colors = os.path.expanduser('~/.cache/wal/colors.json')
 colordict = json.load(open(colors))
-ColorZ=(colordict['colors']['color0'])
-ColorA=(colordict['colors']['color1'])
-ColorB=(colordict['colors']['color2'])
-ColorC=(colordict['colors']['color3'])
-ColorD=(colordict['colors']['color4'])
-ColorE=(colordict['colors']['color5'])
-ColorF=(colordict['colors']['color6'])
-ColorG=(colordict['colors']['color7'])
-ColorH=(colordict['colors']['color8'])
-ColorI=(colordict['colors']['color9'])
+Color0=(colordict['colors']['color0'])
+Color1=(colordict['colors']['color1'])
+Color2=(colordict['colors']['color2'])
+Color3=(colordict['colors']['color3'])
+Color4=(colordict['colors']['color4'])
+Color5=(colordict['colors']['color5'])
+Color6=(colordict['colors']['color6'])
+Color7=(colordict['colors']['color7'])
+Color8=(colordict['colors']['color8'])
+Color9=(colordict['colors']['color9'])
 
 # --------------------------------------------------------
 # Setup Layout Theme
@@ -167,7 +217,7 @@ ColorI=(colordict['colors']['color9'])
 layout_theme = { 
     "border_width": 3,
     "margin": 15,
-    "border_focus": ColorC,
+    "border_focus": Color2,
     "border_normal": "FFFFFF",
     "single_border_width": 3
 }
@@ -222,7 +272,7 @@ widget_list = [
     ),
     widget.TextBox(
         text='  ',
-        foreground=ColorC,
+        foreground=Color2,
     ),
     widget.WindowName(),
     widget.Systray(),
@@ -235,14 +285,14 @@ widget_list = [
     ),
     widget.TextBox(
         text='|',
-        foreground=ColorC,
+        foreground=Color2,
     ),
     widget.Volume(
         fmt='Vol: {}',
     ),
     widget.TextBox(
         text='|',
-        foreground=ColorC,
+        foreground=Color2,
     ),
     widget.Memory(
         measure_mem='G',
@@ -254,19 +304,19 @@ widget_list = [
     ),
     widget.TextBox(
         text='|',
-        foreground=ColorC,
+        foreground=Color2,
     ),
     widget.Battery(),
     widget.TextBox(
         text='|',
-        foreground=ColorC,
+        foreground=Color2,
     ),
     widget.Clock(
         format="%Y-%m-%d %a %I:%M %p",
     ),
     widget.TextBox(
         text='|',
-        foreground=ColorC,
+        foreground=Color2,
     ),
     widget.QuickExit(
         default_text=" ",
@@ -314,7 +364,7 @@ mouse = [
 
 floating_layout = layout.Floating(
     border_width=3,
-    border_focus=ColorC,
+    border_focus=Color2,
     border_normal="FFFFFF",
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
@@ -369,6 +419,11 @@ wmname = "QTILE"
 # HOOK startup
 @hook.subscribe.startup_once
 def autostart():
-    home = os.path.expanduser('~/.config/qtile/autostart.sh')
+    if qtile.core.name == "x11":
+        autostartscript = "~/.config/qtile/autostart_x11.sh"
+    elif qtile.core.name == "wayland":
+        autostartscript = "~/.config/qtile/autostart_wayland.sh"
+    
+    home = os.path.expanduser(autostartscript)
     subprocess.Popen([home])
 
