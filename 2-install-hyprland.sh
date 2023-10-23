@@ -69,11 +69,6 @@ packagesYay=(
 _installPackagesPacman "${packagesPacman[@]}";
 _installPackagesYay "${packagesYay[@]}";
 
-# ------------------------------------------------------
-# Create .hyprland.conf
-# ------------------------------------------------------
-~/dotfiles/hypr/initconfig.sh
-
 echo ""
 echo "DONE!"
 echo "NEXT: Then proceed with with 3-dotfiles.sh"

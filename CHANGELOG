@@ -1,8 +1,7 @@
 Version 2.5
 https://gitlab.com/stephan-raabe/dotfiles/-/releases/2.5
 --------------------------------------------------------
-- Key bindings rofi menu. Opens with SUPER+CTRL+H or right click on Apps
-- Exclude startup hyprctl commands into optional ~/.hyprland.sh . Reload with SUPER+SHIFT+R 
+- Show key bindings defined in ~/dotfiles/hypr/conf/keybindings.conf rofi menu. Opens with SUPER+CTRL+H or right click on Apps
 - Added keybinding to toggle all windows to float and back to tiling (Don't work with web apps)
 - Added polkit-gnome to installation script
 
