@@ -24,25 +24,41 @@ from libqtile.widget import Spacer, Backlight
 from libqtile.widget.image import Image
 from libqtile.dgroups import simple_key_binder
 from pathlib import Path
+from libqtile.log_utils import logger
+from libqtile.backend.wayland import InputConfig
+
+# --------------------------------------------------------
+# Setup
+# --------------------------------------------------------
+
+# Set keyboard layout for wayland
+keyboard_layout = "de"
 
 # Get home path
 home = str(Path.home())
 
+# Set Qtile backend name
+core_name = qtile.core.name
+logger.warning("Using config.py with " + core_name)
+
 # --------------------------------------------------------
 # Define Status Bar
 # --------------------------------------------------------
-wm_bar = "polybar"
+
 # wm_bar = "qtile"
+wm_bar = "polywaybar"
 
 # --------------------------------------------------------
 # Check for Desktop/Laptop
 # --------------------------------------------------------
+
 # 3 = Desktop
 platform = int(os.popen("cat /sys/class/dmi/id/chassis_type").read())
 
 # --------------------------------------------------------
 # Set default apps
 # --------------------------------------------------------
+
 terminal = "alacritty"        
 browser = "chromium"
 # browser = "brave"
@@ -50,9 +66,11 @@ browser = "chromium"
 # --------------------------------------------------------
 # Keybindings
 # --------------------------------------------------------
+
 mod = "mod4" # SUPER KEY
 
-if qtile.core.name == "x11":
+if core_name == "x11":
+    logger.warning("Using keys with x11")
     keys = [
 
         # Focus
@@ -93,20 +111,20 @@ if qtile.core.name == "x11":
 
         #System
         Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
-        Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-        Key([mod, "control"], "q", lazy.spawn(home + "/dotfiles/scripts/powermenu.sh"), desc="Open Powermenu"),
+        Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
+        Key([mod, "control"], "q", lazy.spawn(home + "/dotfiles/qtile/scripts/powermenu.sh"), desc="Open Powermenu"),
         
         # Apps
         Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-        Key([mod, "control"], "Return", lazy.spawn(home + "/dotfiles/scripts/applauncher.sh"), desc="Launch Rofi"),
+        Key([mod, "control"], "Return", lazy.spawn("rofi -show drun"), desc="Launch Rofi"),
         Key([mod], "b", lazy.spawn(browser), desc="Launch Browser"),
         Key([mod, "control"], "b", lazy.spawn(home + "/dotfiles/scripts/bravebookmarks.sh"), desc="Rofi Brave Bookmarks"),
-        Key([mod], "v", lazy.spawn(home + "/dotfiles/scripts/looking-glass.sh"), desc="Start Looking Glass Client"),
-        Key([mod, "shift"], "w", lazy.spawn(home + "/dotfiles/scripts/updatewal.sh"), desc="Update Theme and Wallpaper"),
-        Key([mod, "control"], "w", lazy.spawn(home + "/dotfiles/scripts/wallpaper.sh"), desc="Select Theme and Wallpaper"),
-        Key([mod, "control"], "t", lazy.spawn(home + "/dotfiles/scripts/templates.sh"), desc="Select Tempate and copy to clipboard")
+        Key([mod, "shift"], "w", lazy.spawn(home + "/dotfiles/qtile/scripts/x11/wallpaper.sh"), desc="Update Theme and Wallpaper"),
+        Key([mod, "control"], "w", lazy.spawn(home + "/dotfiles/qtile/scripts/x11/wallpaper.sh select"), desc="Select Theme and Wallpaper")
     ]
 elif qtile.core.name == "wayland":
+    logger.warning("Using keys with wayland")
+
     keys = [
 
         # Focus
@@ -147,18 +165,17 @@ elif qtile.core.name == "wayland":
 
         #System
         Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
-        Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-        Key([mod, "control"], "q", lazy.spawn(home + "/dotfiles/scripts/powermenu.sh"), desc="Open Powermenu"),
+        Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
+        Key([mod, "shift"], "b", lazy.spawn(home + "/dotfiles/waybar/launch.sh"), desc="Reload Waybar"),
+        Key([mod, "control"], "q", lazy.spawn(home + "/dotfiles/qtile/scripts/powermenu.sh"), desc="Open Powermenu"),
         
         # Apps
         Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-        Key([mod, "control"], "Return", lazy.spawn(home + "/dotfiles/scripts/applauncher.sh"), desc="Launch Rofi"),
+        Key([mod, "control"], "Return", lazy.spawn("rofi -show drun"), desc="Launch Rofi"),
         Key([mod], "b", lazy.spawn(browser), desc="Launch Browser"),
         Key([mod, "control"], "b", lazy.spawn(home + "/dotfiles/scripts/bravebookmarks.sh"), desc="Rofi Brave Bookmarks"),
-        Key([mod], "v", lazy.spawn(home + "/dotfiles/scripts/looking-glass.sh"), desc="Start Looking Glass Client"),
-        Key([mod, "shift"], "w", lazy.spawn(home + "/dotfiles/scripts/updatewal.sh"), desc="Update Theme and Wallpaper"),
-        Key([mod, "control"], "w", lazy.spawn(home + "/dotfiles/scripts/wallpaper.sh"), desc="Select Theme and Wallpaper"),
-        Key([mod, "control"], "t", lazy.spawn(home + "/dotfiles/scripts/templates.sh"), desc="Select Tempate and copy to clipboard")
+        Key([mod, "shift"], "w", lazy.spawn(home + "/dotfiles/qtile/scripts/wayland/wallpaper.sh"), desc="Update Theme and Wallpaper"),
+        Key([mod, "control"], "w", lazy.spawn(home + "/dotfiles/qtile/scripts/wayland/wallpaper.sh select"), desc="Select Theme and Wallpaper")
     ]
 
 # --------------------------------------------------------
@@ -259,6 +276,12 @@ extension_defaults = widget_defaults.copy()
 # --------------------------------------------------------
 
 widget_list = [
+    widget.TextBox(
+        text='Apps',
+        foreground='ffffff',
+        desc='',
+        mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(home + "/dotfiles/scripts/applauncher.sh")},
+    ),
     widget.GroupBox(
         highlight_method='block',
         highlight='ffffff',
@@ -318,24 +341,22 @@ widget_list = [
         text='|',
         foreground=Color2,
     ),
-    widget.QuickExit(
-        default_text=" ",
+    widget.TextBox(
+        text=" ",
         fontsize=20,
-        countdown_start=3,
-        countdown_format="{}"
+        mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(home + "/dotfiles/scripts/powermenu.sh")},
     ),
 ]
 
 if (platform == 3):
-    del widget_list[10:12]
+    del widget_list[11:13]
 
 # --------------------------------------------------------
 # Screens
 # --------------------------------------------------------
 
-if (wm_bar == "polybar"):
-    screens = [Screen(top=bar.Gap(size=28))]
-else:
+if (wm_bar == "qtile"):
+    logger.warning("Loading qtile bar")
     screens = [
         Screen(
             top=bar.Bar(
@@ -347,6 +368,12 @@ else:
             ),
         ),
     ]
+else:
+    screens = [Screen(top=bar.Gap(size=28))]
+    if (core_name == "x11"):
+        screens = [Screen(top=bar.Gap(size=28))]
+    else:
+        screens = [Screen(top=bar.Gap(size=0))]
 
 # --------------------------------------------------------
 # Drag floating layouts
@@ -413,6 +440,17 @@ wl_input_rules = None
 wmname = "QTILE"
 
 # --------------------------------------------------------
+# Set wayland properties
+# --------------------------------------------------------
+
+
+
+# Keyboard layout
+wl_input_rules = {
+    "type:keyboard": InputConfig(kb_layout=keyboard_layout),
+}
+
+# --------------------------------------------------------
 # Hooks
 # --------------------------------------------------------
 
@@ -420,8 +458,10 @@ wmname = "QTILE"
 @hook.subscribe.startup_once
 def autostart():
     if qtile.core.name == "x11":
+        logger.warning("Loading autostart_x11.sh")
         autostartscript = "~/.config/qtile/autostart_x11.sh"
     elif qtile.core.name == "wayland":
+        logger.warning("Loading autostart_wayland.sh")
         autostartscript = "~/.config/qtile/autostart_wayland.sh"
     
     home = os.path.expanduser(autostartscript)

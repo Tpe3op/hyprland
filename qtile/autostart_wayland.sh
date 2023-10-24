@@ -15,12 +15,7 @@
 # For Virtual Machine 
 # xrandr --output Virtual-1 --mode 1920x1080
 
-# Set keyboard mapping
-# setxkbmap de
-setxkbmap en
-
-# Load picom
-# picom &
+# Set keyboard mapping in config.py
 
 # Load power manager
 xfce4-power-manager &
@@ -28,8 +23,15 @@ xfce4-power-manager &
 # Load notification service
 dunst &
 
-# Launch polybar
-# ~/dotfiles/polybar/launch.sh &
+# Launch GTK
+~/dotfiles/gtk/gtk.sh
+
+# Launch waybar
+~/dotfiles/waybar/launch.sh &
+
+sleep 1
+
+swww init
 
 # Setup Wallpaper and update colors
-# ~/dotfiles/scripts/updatewal.sh &
+~/dotfiles/qtile/scripts/wayland/wallpaper.sh init &

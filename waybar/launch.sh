@@ -36,11 +36,12 @@ if [ ! -f ~/dotfiles/waybar/themes${arrThemes[1]}/style.css ]; then
 fi
 
 # ----------------------------------------------------- 
-# Loading the configuration and style file based on the username
+# Loading the configuration
 # ----------------------------------------------------- 
-if [[ $USER = "raabe" ]]
-then
-    waybar -c ~/dotfiles/waybar/themes${arrThemes[0]}/myconfig -s ~/dotfiles/waybar/themes${arrThemes[1]}/style.css &
-else
+if [ $DESKTOP_SESSION = "hyprland" ]; then
+    echo "Loading waybar for Hyprland..."
     waybar -c ~/dotfiles/waybar/themes${arrThemes[0]}/config -s ~/dotfiles/waybar/themes${arrThemes[1]}/style.css &
-fi 
+else
+    echo "Loading waybar for Wayland..."
+    waybar -c ~/dotfiles/waybar/themes${arrThemes[0]}/config-wlr -s ~/dotfiles/waybar/themes${arrThemes[1]}/style.css &
+fi

@@ -9,12 +9,33 @@
 # by Stephan Raabe (2023) 
 # ----------------------------------------------------- 
 
-echo "Changing theme..."
+case $1 in
 
-# ----------------------------------------------------- 
-# Update Wallpaper with pywal
-# ----------------------------------------------------- 
-wal -q -i ~/wallpaper/
+    # Load wallpaper from .cache of last session 
+    "init")
+        if [ -f ~/.cache/current_wallpaper.jpg ]; then
+            wal -q -i ~/.cache/current_wallpaper.jpg
+        else
+            wal -q -i ~/wallpaper/
+        fi
+    ;;
+
+    # Select wallpaper with rofi
+    "select")
+        selected=$(ls -1 ~/wallpaper | grep "jpg" | rofi -dmenu -config ~/dotfiles/rofi/config-wallpaper.rasi)
+        if [ ! "$selected" ]; then
+            echo "No wallpaper selected"
+            exit
+        fi
+        wal -q -i ~/wallpaper/$selected
+    ;;
+
+    # Randomly select wallpaper 
+    *)
+        wal -q -i ~/wallpaper/
+    ;;
+
+esac
 
 # ----------------------------------------------------- 
 # Wait for 1 sec
@@ -30,6 +51,7 @@ qtile cmd-obj -o cmd -f reload_config
 # Get new theme
 # ----------------------------------------------------- 
 source "$HOME/.cache/wal/colors.sh"
+echo "Wallpaper: $wallpaper"
 newwall=$(echo $wallpaper | sed "s|$HOME/wallpaper/||g")
 
 # ----------------------------------------------------- 
@@ -43,5 +65,4 @@ sleep 1
 # Send notification
 # ----------------------------------------------------- 
 notify-send "Colors and Wallpaper updated" "with image $newwall"
-
 echo "Done."

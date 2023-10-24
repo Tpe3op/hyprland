@@ -152,7 +152,19 @@ window#waybar.empty #window {
  * Custom Quicklinks
  * ----------------------------------------------------- */
 
-#custom-brave, #custom-keybindings, #custom-outlook, #custom-filemanager, #custom-teams, #custom-chatgpt, #custom-calculator, #custom-windowsvm, #custom-cliphist, #custom-wallpaper, #custom-waybarthemes {
+#custom-brave, 
+#custom-browser, 
+#custom-keybindings, 
+#custom-outlook, 
+#custom-filemanager, 
+#custom-teams, 
+#custom-chatgpt, 
+#custom-calculator, 
+#custom-windowsvm, 
+#custom-cliphist, 
+#custom-wallpaper, 
+#custom-wallpaperwlr, 
+#custom-waybarthemes {
     margin-right: 20px;
     font-size: 20px;
     font-weight: bold;
@@ -168,7 +180,7 @@ window#waybar.empty #window {
  * Custom Modules
  * ----------------------------------------------------- */
 
-#custom-appmenu {
+#custom-appmenu, #custom-appmenuwlr {
     background-color: @backgrounddark;
     font-size: 16px;
     color: @textcolor1;
@@ -183,7 +195,7 @@ window#waybar.empty #window {
  * Custom Exit
  * ----------------------------------------------------- */
 
-#custom-exit {
+#custom-exit, #custom-exitwlr {
     margin: 0px 20px 0px 0px;
     padding:0px;
     font-size:20px;

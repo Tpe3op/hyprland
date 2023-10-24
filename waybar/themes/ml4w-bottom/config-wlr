@@ -9,17 +9,18 @@
 // ----------------------------------------------------- 
 //
 {
+    // General Settings
+
     // Position TOP
-    "position": "top",
-    "margin-top": 14,
-    "margin-bottom": 0,
+    // "layer": "top",
+    // "margin-top": 14,
+    // "margin-bottom": 0,
 
     // Position BOTTOM
-    // "position": "bottom",
-    // "margin-bottom": 14,
-    // "margin-top": 0,
-
-     // General Settings
+    "position": "bottom",
+    "margin-top": 0,
+    "margin-bottom": 14,
+    
     "layer": "top",
     "height": 16,
     "margin-left": 0,
@@ -31,30 +32,27 @@
 
     // Modules Left
     "modules-left": [
-        "custom/appmenu",
-        "custom/wallpaper",
-        "custom/waybarthemes",        
-        "wlr/taskbar",
-        "group/quicklinks",
-        "hyprland/window"
+        "custom/appmenuwlr",
+        "custom/wallpaperwlr",
+        "custom/waybarthemes",          
+        "group/quicklinks"
     ],
 
     // Modules Center
-    "modules-center": [
-        "hyprland/workspaces"
-    ],
+    // "modules-center": [
+    //    "wlr/workspaces"
+    // ],
 
     // Modules Right    
     "modules-right": [
-        "custom/youtube",
         "custom/updates",
         "pulseaudio",
         "bluetooth",
-        "battery",
+        "battery", 
         "group/hardware",
         "custom/cliphist",
         "network",
-        "custom/exit",
+        "custom/exitwlr",
         "clock"
     ],
 
@@ -63,8 +61,7 @@
         "orientation": "horizontal",
         "modules": [
             "custom/filemanager",
-            "custom/chatgpt",
-            "custom/windowsvm"
+            "custom/browser"
          ]
     },
 

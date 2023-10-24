@@ -50,6 +50,10 @@ choice=$(echo -e "$listNames" | rofi -dmenu -config ~/dotfiles/rofi/config-wallp
 # Set new theme by writing the theme information to ~/.cache/.themestyle.sh
 # ----------------------------------------------------- 
 if [ "$choice" ]; then
+    echo "Loading waybar theme..."
     echo "${listThemes[$choice+1]}" > ~/.cache/.themestyle.sh
     ~/dotfiles/waybar/launch.sh
+    if [ ! $DESKTOP_SESSION = "hyprland" ]; then
+        ~/dotfiles/scripts/init-swww.sh
+    fi
 fi

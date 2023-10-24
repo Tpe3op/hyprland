@@ -25,6 +25,22 @@
         }       
     },
 
+    // Workspaces
+    "wlr/workspaces" : {
+        "on-click": "activate",
+        "active-only": false,
+        "all-outputs": true,
+        "format": "{}",
+        "format-icons": {
+			"urgent": "",
+			"active": "",
+			"default": ""
+        },
+        "persistent_workspaces": {
+             "*": 5
+        }       
+    },    
+
     // Taskbar
     "wlr/taskbar": {
         "format": "{icon}",
@@ -89,8 +105,16 @@
     // Wallpaper
     "custom/wallpaper": {
         "format": "",
-        "on-click": "~/dotfiles/scripts/wallpaper-swww.sh",
-        "on-click-right": "~/dotfiles/scripts/updatewal-swww.sh",
+        "on-click": "~/dotfiles/hypr/scripts/wallpaper.sh select",
+        "on-click-right": "~/dotfiles/hypr/scripts/wallpaper.sh",
+        "tooltip": false
+    },
+
+    // Wallpaper
+    "custom/wallpaperwlr": {
+        "format": "",
+        "on-click": "~/dotfiles/qtile/scripts/waybar/wallpaper.sh select",
+        "on-click-right": "~/dotfiles/qtile/scripts/waybar/updatewal.sh",
         "tooltip": false
     },
 
@@ -136,6 +160,13 @@
         "tooltip": false
     },
 
+    // Browser Launcher
+    "custom/browser": {
+        "format": "",
+        "on-click": "chromium",
+        "tooltip": false
+    },    
+
     // ChatGPT Launcher
     "custom/chatgpt": {
         "format": "",
@@ -160,15 +191,29 @@
     // Rofi Application Launcher
     "custom/appmenu": {
         "format": "Apps",
-        "on-click": "~/dotfiles/scripts/applauncher.sh",
+        "on-click": "rofi -show drun",
         "on-click-right": "~/dotfiles/hypr/scripts/keybindings.sh",
         "tooltip": false
     },
 
+    // Rofi Application Launcher
+    "custom/appmenuwlr": {
+        "format": "Apps",
+        "on-click": "rofi -show drun",
+        "tooltip": false
+    },
+    
     // Power Menu
     "custom/exit": {
         "format": "",
         "on-click": "wlogout",
+        "tooltip": false
+    },
+
+    // Power Menu
+    "custom/exitwlr": {
+        "format": "",
+        "on-click": "~/dotfiles/qtile/scripts/powermenu.sh",
         "tooltip": false
     },
 
