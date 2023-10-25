@@ -124,7 +124,10 @@ if core_name == "x11":
         Key([mod], "b", lazy.spawn(browser), desc="Launch Browser"),
         Key([mod, "control"], "b", lazy.spawn(home + "/dotfiles/scripts/bravebookmarks.sh"), desc="Rofi Brave Bookmarks"),
         Key([mod, "shift"], "w", lazy.spawn(home + "/dotfiles/qtile/scripts/x11/wallpaper.sh"), desc="Update Theme and Wallpaper"),
-        Key([mod, "control"], "w", lazy.spawn(home + "/dotfiles/qtile/scripts/x11/wallpaper.sh select"), desc="Select Theme and Wallpaper")
+        Key([mod, "control"], "w", lazy.spawn(home + "/dotfiles/qtile/scripts/x11/wallpaper.sh select"), desc="Select Theme and Wallpaper"),
+
+        Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl -q s +20%")),
+        Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl -q s 20%-"))        
     ]
 elif qtile.core.name == "wayland":
     logger.warning("Using keys with wayland")
@@ -180,7 +183,10 @@ elif qtile.core.name == "wayland":
         Key([mod], "b", lazy.spawn(browser), desc="Launch Browser"),
         Key([mod, "control"], "b", lazy.spawn(home + "/dotfiles/scripts/bravebookmarks.sh"), desc="Rofi Brave Bookmarks"),
         Key([mod, "shift"], "w", lazy.spawn(home + "/dotfiles/qtile/scripts/wayland/wallpaper.sh"), desc="Update Theme and Wallpaper"),
-        Key([mod, "control"], "w", lazy.spawn(home + "/dotfiles/qtile/scripts/wayland/wallpaper.sh select"), desc="Select Theme and Wallpaper")
+        Key([mod, "control"], "w", lazy.spawn(home + "/dotfiles/qtile/scripts/wayland/wallpaper.sh select"), desc="Select Theme and Wallpaper"),
+
+        Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl -q s +20%")),
+        Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl -q s 20%-"))        
     ]
 
 # --------------------------------------------------------

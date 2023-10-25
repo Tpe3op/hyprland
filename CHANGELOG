@@ -1,9 +1,21 @@
 Version 2.5
 https://gitlab.com/stephan-raabe/dotfiles/-/releases/2.5
 --------------------------------------------------------
+General:
+- Script folder cleaned up and window manager scripts moved to related wm scripts folder
+
+Hyprland:
 - Show key bindings defined in ~/dotfiles/hypr/conf/keybindings.conf rofi menu. Opens with SUPER+CTRL+H or right click on Apps
 - Added keybinding to toggle all windows to float and back to tiling (Don't work with web apps)
 - Added polkit-gnome to installation script
+- Add brightness control for FN Brightness keys
+- swww loading wallpaper from last session
+
+Qtile:
+- Add wayland support
+- Status bar can be switch with SUPER + SHIFT + S between Qtile bar and Waybar/Polybar
+- swww/wal loading wallpaper from last session
+- Add brightness control for FN Brightness keys
 
 Version 2.4
 https://gitlab.com/stephan-raabe/dotfiles/-/releases/2.4
