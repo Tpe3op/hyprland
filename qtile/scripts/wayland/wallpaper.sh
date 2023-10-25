@@ -56,7 +56,7 @@ newwall=$(echo $wallpaper | sed "s|$HOME/wallpaper/||g")
 # ----------------------------------------------------- 
 # Reload waybar with new colors
 # -----------------------------------------------------
-~/dotfiles/waybar/launch.sh
+~/dotfiles/qtile/scripts/wayland/loadbar.sh
 sleep 1
 
 # ----------------------------------------------------- 

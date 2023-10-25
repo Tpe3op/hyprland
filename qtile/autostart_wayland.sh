@@ -27,7 +27,7 @@ dunst &
 ~/dotfiles/gtk/gtk.sh
 
 # Launch waybar
-~/dotfiles/waybar/launch.sh &
+~/dotfiles/qtile/scripts/wayland/loadbar.sh
 
 sleep 1
 

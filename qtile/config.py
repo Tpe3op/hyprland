@@ -44,9 +44,12 @@ logger.warning("Using config.py with " + core_name)
 # --------------------------------------------------------
 # Define Status Bar
 # --------------------------------------------------------
+if core_name == "x11":
+    wm_bar = Path(home + "/.cache/.qtile_bar_x11.sh").read_text().replace("\n", "")
+elif qtile.core.name == "wayland":
+    wm_bar = Path(home + "/.cache/.qtile_bar_wayland.sh").read_text().replace("\n", "")
 
-# wm_bar = "qtile"
-wm_bar = "polywaybar"
+logger.warning("Status bar: " + wm_bar)
 
 # --------------------------------------------------------
 # Check for Desktop/Laptop
@@ -113,7 +116,8 @@ if core_name == "x11":
         Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
         Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
         Key([mod, "control"], "q", lazy.spawn(home + "/dotfiles/qtile/scripts/powermenu.sh"), desc="Open Powermenu"),
-        
+        Key([mod, "shift"], "s", lazy.spawn(home + "/dotfiles/qtile/scripts/x11/barswitcher.sh"), desc="Switch Status Bar"),
+    
         # Apps
         Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
         Key([mod, "control"], "Return", lazy.spawn("rofi -show drun"), desc="Launch Rofi"),
@@ -168,6 +172,7 @@ elif qtile.core.name == "wayland":
         Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
         Key([mod, "shift"], "b", lazy.spawn(home + "/dotfiles/waybar/launch.sh"), desc="Reload Waybar"),
         Key([mod, "control"], "q", lazy.spawn(home + "/dotfiles/qtile/scripts/powermenu.sh"), desc="Open Powermenu"),
+        Key([mod, "shift"], "s", lazy.spawn(home + "/dotfiles/qtile/scripts/wayland/barswitcher.sh"), desc="Switch Status Bar"),
         
         # Apps
         Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
@@ -344,7 +349,7 @@ widget_list = [
     widget.TextBox(
         text=" ",
         fontsize=20,
-        mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(home + "/dotfiles/scripts/powermenu.sh")},
+        mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(home + "/dotfiles/qtile/scripts/powermenu.sh")},
     ),
 ]
 

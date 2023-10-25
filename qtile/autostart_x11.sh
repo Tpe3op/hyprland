@@ -31,7 +31,7 @@ dunst &
 sleep 1
 
 # Launch polybar
-~/dotfiles/polybar/launch.sh &
+~/dotfiles/qtile/scripts/x11/loadbar.sh
 
 sleep 1
 
