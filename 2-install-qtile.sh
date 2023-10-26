@@ -51,12 +51,22 @@ packagesPacman=(
     "picom"
     "scrot"
     "slock"
+    "grim" 
+    "slurp"
+    "swappy"
+    "cliphist"
+);
+
+packagesYay=(
+    "swww" 
+    "qtile-extras"
 );
 
 # ------------------------------------------------------
 # Install required packages
 # ------------------------------------------------------
 _installPackagesPacman "${packagesPacman[@]}";
+_installPackagesYay "${packagesYay[@]}";
 
 echo ""
 echo "DONE!" 

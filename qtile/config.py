@@ -155,7 +155,7 @@ elif qtile.core.name == "wayland":
         Key([mod, "shift"], "h", lazy.layout.swap_left()),
         Key([mod, "shift"], "l", lazy.layout.swap_right()),
 
-        Key([mod], "Print", lazy.spawn(home + "/dotfiles/scripts/scrot.sh")),
+        Key([mod], "Print", lazy.spawn(home + "/dotfiles/scripts/grim.sh")),
 
         # Size
         Key([mod, "control"], "Down", lazy.layout.shrink(), desc="Grow window to the left"),
@@ -490,8 +490,6 @@ wmname = "QTILE"
 # --------------------------------------------------------
 # Set wayland properties
 # --------------------------------------------------------
-
-
 
 # Keyboard layout
 wl_input_rules = {
