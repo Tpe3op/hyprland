@@ -27,6 +27,10 @@ from pathlib import Path
 from libqtile.log_utils import logger
 from libqtile.backend.wayland import InputConfig
 
+from qtile_extras import widget
+from qtile_extras.widget.decorations import RectDecoration
+from qtile_extras.widget.decorations import PowerLineDecoration
+
 # --------------------------------------------------------
 # Setup
 # --------------------------------------------------------
@@ -234,6 +238,12 @@ Color6=(colordict['colors']['color6'])
 Color7=(colordict['colors']['color7'])
 Color8=(colordict['colors']['color8'])
 Color9=(colordict['colors']['color9'])
+Color10=(colordict['colors']['color10'])
+Color11=(colordict['colors']['color11'])
+Color12=(colordict['colors']['color12'])
+Color13=(colordict['colors']['color13'])
+Color14=(colordict['colors']['color14'])
+Color15=(colordict['colors']['color15'])
 
 # --------------------------------------------------------
 # Setup Layout Theme
@@ -280,17 +290,49 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 # --------------------------------------------------------
+# Decorations
+# https://qtile-extras.readthedocs.io/en/stable/manual/how_to/decorations.html
+# --------------------------------------------------------
+
+decor_left = {
+    "decorations": [
+        PowerLineDecoration(
+            path="arrow_left"
+            # path="rounded_left"
+            # path="forward_slash"
+            # path="back_slash"
+        )
+    ],
+}
+
+decor_right = {
+    "decorations": [
+        PowerLineDecoration(
+            path="arrow_right"
+            # path="rounded_right"
+            # path="forward_slash"
+            # path="back_slash"
+        )
+    ],
+}
+
+# --------------------------------------------------------
 # Widgets
 # --------------------------------------------------------
 
 widget_list = [
     widget.TextBox(
+        **decor_left,
+        background=Color1,
         text='Apps',
         foreground='ffffff',
         desc='',
+        padding=10,
         mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("rofi -show drun")},
     ),
     widget.GroupBox(
+        **decor_left,
+        background="#ffffff.7",
         highlight_method='block',
         highlight='ffffff',
         block_border='ffffff',
@@ -301,63 +343,59 @@ widget_list = [
         this_current_screen_border='ffffff',
         active='ffffff'
     ),
-    widget.TextBox(
-        text='  ',
-        foreground=Color2,
+    widget.WindowName(
+        **decor_left,
+        max_chars=50,
+        background=Color2,
+        padding=10,
+        width=400
     ),
-    widget.WindowName(),
-    widget.Systray(),
-    widget.TextBox(
-        text='',
-        fontsize=18,
-        foreground='ffffff',
-        desc='Notes',
-        mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(terminal + ' -e vim ' + home + '/notes.txt')},
+    widget.Spacer(),
+    widget.Spacer(
+        length=30
     ),
     widget.TextBox(
-        text='|',
-        foreground=Color2,
-    ),
-    widget.Volume(
-        fmt='Vol: {}',
-    ),
-    widget.TextBox(
-        text='|',
-        foreground=Color2,
-    ),
+        **decor_right,
+        background="#000000.3"      
+    ),    
     widget.Memory(
+        **decor_right,
+        background=Color10,
+        padding=10,        
         measure_mem='G',
         format="{MemUsed:.0f}{mm} ({MemTotal:.0f}{mm})"
     ),
+    widget.Volume(
+        **decor_right,
+        background=Color12,
+        padding=10, 
+        fmt='Vol: {}',
+    ),
     widget.DF(
+        **decor_right,
+        padding=10, 
+        background=Color8,        
         visible_on_warn=False,
         format="{p} {uf}{m} ({r:.0f}%)"
     ),
-    widget.TextBox(
-        text='|',
-        foreground=Color2,
-    ),
-    widget.Battery(),
-    widget.TextBox(
-        text='|',
-        foreground=Color2,
-    ),
     widget.Clock(
-        format="%Y-%m-%d %a %I:%M %p",
+        **decor_right,
+        background=Color4,   
+        padding=10,      
+        format="%Y-%m-%d / %I:%M %p",
     ),
     widget.TextBox(
-        text='|',
-        foreground=Color2,
-    ),
-    widget.TextBox(
+        **decor_right,
+        background=Color2,     
+        padding=5,    
         text=" ",
         fontsize=20,
         mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(home + "/dotfiles/qtile/scripts/powermenu.sh")},
     ),
 ]
 
-if (platform == 3):
-    del widget_list[11:13]
+#if (platform == 3):
+    # del widget_list[11:13]
 
 # --------------------------------------------------------
 # Screens
@@ -368,11 +406,13 @@ if (wm_bar == "qtile"):
     screens = [
         Screen(
             top=bar.Bar(
-    		widget_list,
-                24,
+    		    widget_list,
+                30,
+                padding=20,
                 opacity=0.7,
-                border_width=[3, 0, 3, 0],
-                margin=[0,0,0,0]
+                border_width=[0, 0, 0, 0],
+                margin=[0,0,0,0],
+                background="#000000.3"
             ),
         ),
     ]

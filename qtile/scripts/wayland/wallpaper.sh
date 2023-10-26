@@ -64,6 +64,8 @@ swww img $wallpaper \
     --transition-type="random" \
     --transition-duration=0.7 \
 
+qtile cmd-obj -o cmd -f reload_config
+
 # ----------------------------------------------------- 
 # Send notification
 # ----------------------------------------------------- 
