@@ -265,19 +265,10 @@ layout_theme = {
 # --------------------------------------------------------
 
 layouts = [
-    # layout.Columns(),
     layout.Max(**layout_theme),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
     layout.MonadTall(**layout_theme),
     layout.MonadWide(**layout_theme),
     layout.RatioTile(**layout_theme),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
     layout.Floating()
 ]
 
@@ -326,7 +317,7 @@ decor_right = {
 widget_list = [
     widget.TextBox(
         **decor_left,
-        background=Color1,
+        background=Color1+".4",
         text='Apps',
         foreground='ffffff',
         desc='',
@@ -346,12 +337,29 @@ widget_list = [
         this_current_screen_border='ffffff',
         active='ffffff'
     ),
+    widget.TextBox(
+        **decor_left,
+        background="#ffffff.4",
+        text=" ",
+        foreground="000000.6",
+        fontsize=18,
+        mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("chromium")},
+    ),
+    widget.TextBox(
+        **decor_left,
+        background="#ffffff.4",
+        text=" ",
+        foreground="000000.6",
+        fontsize=18,
+        mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("thunar")}
+    ),
+    
     widget.WindowName(
         **decor_left,
         max_chars=50,
-        background=Color2,
-        padding=10,
-        width=400
+        background=Color2+".4",
+        width=400,
+        padding=10
     ),
     widget.Spacer(),
     widget.Spacer(
@@ -363,33 +371,33 @@ widget_list = [
     ),    
     widget.Memory(
         **decor_right,
-        background=Color10,
+        background=Color10+".4",
         padding=10,        
         measure_mem='G',
         format="{MemUsed:.0f}{mm} ({MemTotal:.0f}{mm})"
     ),
     widget.Volume(
         **decor_right,
-        background=Color12,
+        background=Color12+".4",
         padding=10, 
         fmt='Vol: {}',
     ),
     widget.DF(
         **decor_right,
         padding=10, 
-        background=Color8,        
+        background=Color8+".4",        
         visible_on_warn=False,
         format="{p} {uf}{m} ({r:.0f}%)"
     ),
     widget.Clock(
         **decor_right,
-        background=Color4,   
+        background=Color4+".4",   
         padding=10,      
         format="%Y-%m-%d / %I:%M %p",
     ),
     widget.TextBox(
         **decor_right,
-        background=Color2,     
+        background=Color2+".4",     
         padding=5,    
         text=" ",
         fontsize=20,

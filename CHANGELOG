@@ -13,7 +13,8 @@ Hyprland:
 
 Qtile:
 - Add wayland support
-- Status bar can be switch with SUPER + SHIFT + S between Qtile bar and Waybar/Polybar
+- New Qtile status bar theme
+- Status bar can be switch on X11 with SUPER + SHIFT + S between Qtile bar and Polybar
 - swww/wal loading wallpaper from last session
 - Add brightness control for FN Brightness keys
 
