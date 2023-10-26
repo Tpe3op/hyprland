@@ -288,7 +288,7 @@ widget_list = [
         text='Apps',
         foreground='ffffff',
         desc='',
-        mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(home + "/dotfiles/scripts/applauncher.sh")},
+        mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("rofi -show drun")},
     ),
     widget.GroupBox(
         highlight_method='block',
