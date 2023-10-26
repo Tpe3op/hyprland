@@ -58,10 +58,14 @@ newwall=$(echo $wallpaper | sed "s|$HOME/wallpaper/||g")
 # -----------------------------------------------------
 swww init
 
+transition_type="wipe"
+# transition_type="outer"
+# transition_type="random"
+
 swww img $wallpaper \
     --transition-bezier .43,1.19,1,.4 \
     --transition-fps=60 \
-    --transition-type="random" \
+    --transition-type=$transition_type \
     --transition-duration=0.7 \
 
 qtile cmd-obj -o cmd -f reload_config

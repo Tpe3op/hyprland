@@ -49,7 +49,10 @@ logger.warning("Using config.py with " + core_name)
 # Define Status Bar
 # --------------------------------------------------------
 if core_name == "x11":
-    wm_bar = Path(home + "/.cache/.qtile_bar_x11.sh").read_text().replace("\n", "")
+    try:
+        wm_bar = Path(home + "/.cache/.qtile_bar_x11.sh").read_text().replace("\n", "")
+    except:
+        wm_bar = "qtile"
 elif qtile.core.name == "wayland":
     wm_bar = "qtile"
 
