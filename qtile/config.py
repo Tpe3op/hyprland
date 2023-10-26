@@ -176,6 +176,7 @@ elif qtile.core.name == "wayland":
         Key([mod, "shift"], "b", lazy.spawn(home + "/dotfiles/waybar/launch.sh"), desc="Reload Waybar"),
         Key([mod, "control"], "q", lazy.spawn(home + "/dotfiles/qtile/scripts/powermenu.sh"), desc="Open Powermenu"),
         Key([mod, "shift"], "s", lazy.spawn(home + "/dotfiles/qtile/scripts/wayland/barswitcher.sh"), desc="Switch Status Bar"),
+        Key([mod, "control"], "t", lazy.spawn(home + "/dotfiles/waybar/themeswitcher.sh"), desc="Switch Waybar Bar"),
         
         # Apps
         Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),

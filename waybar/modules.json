@@ -113,8 +113,8 @@
     // Wallpaper
     "custom/wallpaperwlr": {
         "format": "",
-        "on-click": "~/dotfiles/qtile/scripts/waybar/wallpaper.sh select",
-        "on-click-right": "~/dotfiles/qtile/scripts/waybar/updatewal.sh",
+        "on-click": "~/dotfiles/qtile/scripts/wayland/wallpaper.sh select",
+        "on-click-right": "~/dotfiles/qtile/scripts/wayland/updatewal.sh",
         "tooltip": false
     },
 

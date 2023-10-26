@@ -36,7 +36,7 @@ else
     qtile cmd-obj -o cmd -f reload_config
     sleep 1
     ~/dotfiles/waybar/launch.sh &
-    sleep 2
+    sleep 1
     qtile cmd-obj -o cmd -f reload_config
 fi
 
