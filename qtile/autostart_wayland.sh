@@ -26,11 +26,6 @@ dunst &
 # Launch GTK
 ~/dotfiles/gtk/gtk.sh
 
-# Launch waybar
-~/dotfiles/qtile/scripts/wayland/loadbar.sh
-
-sleep 1
-
 swww init
 
 # Setup Wallpaper and update colors

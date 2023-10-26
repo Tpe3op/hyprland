@@ -47,7 +47,7 @@ logger.warning("Using config.py with " + core_name)
 if core_name == "x11":
     wm_bar = Path(home + "/.cache/.qtile_bar_x11.sh").read_text().replace("\n", "")
 elif qtile.core.name == "wayland":
-    wm_bar = Path(home + "/.cache/.qtile_bar_wayland.sh").read_text().replace("\n", "")
+    wm_bar = "qtile"
 
 logger.warning("Status bar: " + wm_bar)
 
@@ -173,16 +173,12 @@ elif qtile.core.name == "wayland":
         #System
         Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
         Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
-        Key([mod, "shift"], "b", lazy.spawn(home + "/dotfiles/waybar/launch.sh"), desc="Reload Waybar"),
         Key([mod, "control"], "q", lazy.spawn(home + "/dotfiles/qtile/scripts/powermenu.sh"), desc="Open Powermenu"),
-        Key([mod, "shift"], "s", lazy.spawn(home + "/dotfiles/qtile/scripts/wayland/barswitcher.sh"), desc="Switch Status Bar"),
-        Key([mod, "control"], "t", lazy.spawn(home + "/dotfiles/waybar/themeswitcher.sh"), desc="Switch Waybar Bar"),
         
         # Apps
         Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
         Key([mod, "control"], "Return", lazy.spawn("rofi -show drun"), desc="Launch Rofi"),
         Key([mod], "b", lazy.spawn(browser), desc="Launch Browser"),
-        Key([mod, "control"], "b", lazy.spawn(home + "/dotfiles/scripts/bravebookmarks.sh"), desc="Rofi Brave Bookmarks"),
         Key([mod, "shift"], "w", lazy.spawn(home + "/dotfiles/qtile/scripts/wayland/wallpaper.sh"), desc="Update Theme and Wallpaper"),
         Key([mod, "control"], "w", lazy.spawn(home + "/dotfiles/qtile/scripts/wayland/wallpaper.sh select"), desc="Select Theme and Wallpaper"),
 

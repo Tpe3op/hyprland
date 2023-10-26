@@ -52,9 +52,5 @@ choice=$(echo -e "$listNames" | rofi -dmenu -config ~/dotfiles/rofi/config-wallp
 if [ "$choice" ]; then
     echo "Loading waybar theme..."
     echo "${listThemes[$choice+1]}" > ~/.cache/.themestyle.sh
-    if [ $DESKTOP_SESSION = "hyprland" ]; then
-        ~/dotfiles/waybar/launch.sh
-    else
-        ~/dotfiles/qtile/scripts/wayland/wallpaper.sh init
-    fi
+    ~/dotfiles/waybar/launch.sh
 fi

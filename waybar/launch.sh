@@ -38,10 +38,4 @@ fi
 # ----------------------------------------------------- 
 # Loading the configuration
 # ----------------------------------------------------- 
-if [ $DESKTOP_SESSION = "hyprland" ]; then
-    echo "Loading waybar for Hyprland..."
-    waybar -c ~/dotfiles/waybar/themes${arrThemes[0]}/config -s ~/dotfiles/waybar/themes${arrThemes[1]}/style.css &
-else
-    echo "Loading waybar for Wayland..."
-    waybar -c ~/dotfiles/waybar/themes${arrThemes[0]}/config-wlr -s ~/dotfiles/waybar/themes${arrThemes[1]}/style.css &
-fi
+waybar -c ~/dotfiles/waybar/themes${arrThemes[0]}/config -s ~/dotfiles/waybar/themes${arrThemes[1]}/style.css &
