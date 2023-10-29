@@ -114,7 +114,7 @@ packagesYay=(
     "pfetch" 
     "bibata-cursor-theme" 
     "trizen"
-    "sddm-sugar-dark"
+    "sddm-sugar-candy"
 );
   
 # ------------------------------------------------------
